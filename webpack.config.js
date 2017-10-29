@@ -2,11 +2,12 @@ var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
 var extractTextPlugin=require('extract-text-webpack-plugin');//用来单独加载css，不需要依赖js，bundle
 module.exports={
-  entry:'./src/script/app.js',
+  //entry:'./src/script/app.js',
   entry:{
     app:'./src/script/app.js',
-    runoob1:'./src/script/runoob1.js',
-    runoob2:'./src/script/runoob2.js'
+    runoob1:'./src/script/js/runoob1.js',
+    //这里是指定多个入口文件，将来打包成多个文件。
+    runoob2:'./src/script/js/runoob2.js'
   },
   output:{
     path:__dirname+'/build',
@@ -37,7 +38,7 @@ module.exports={
     })
   ],
    resolve:{
-       extensions:['','.js','.json']//配置，require自动补全后缀的文件。
+       extensions:['.js','.json']//配置，require自动补全后缀的文件。
    },
    externals: {
        "jquery": "jQuery"
