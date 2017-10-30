@@ -2,19 +2,19 @@ var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
 var extractTextPlugin=require('extract-text-webpack-plugin');//用来单独加载css，不需要依赖js，bundle
 module.exports={
-  //entry:'./src/script/app.js',
+  //entry:'./src/script/app.js', 打包成单文件
   entry:{
     app:'./src/script/app.js',
     runoob1:'./src/script/js/runoob1.js',
-    //这里是指定多个入口文件，将来打包成多个文件。
     runoob2:'./src/script/js/runoob2.js'
+    //这里打包成多个文件
   },
   output:{
     path:__dirname+'/build',
     filename:'[name].js'
   },
   devServer:{
-    contentBase:'./build',
+    contentBase:'./build',//本地服务器所加载页面所在的目录
     port:9000,
     host:'localhost',
     historyApiFallback:true
@@ -38,11 +38,15 @@ module.exports={
     })
   ],
    resolve:{
-       extensions:['.js','.json']//配置，require自动补全后缀的文件。
+       extensions:['.js','.json','.jsx']//配置，require自动补全后缀的文件。
    },
    externals: {
-       "jquery": "jQuery"
+       "jquery": "jQuery"/*
+       'react-dom': 'react-dom',
+       'react':'react',*/
+       //问：为什么放在这就不行。js里面引入失败？。
    },
+
   module:{
     loaders:[
 //      {
@@ -70,7 +74,20 @@ module.exports={
       {
         test:/\.js$/,
         loader:'jsx-loader'
+      },
+       {
+        test: /\.jsx$/,
+
+        use: [
+        {
+          loader: ["babel-loader","jsx-loader"],
+          options: {
+             presets: ['es2017','react'],
+             exclude: /node_modules/
+          }
+        }]
       }
+
     ]
   }
 }
