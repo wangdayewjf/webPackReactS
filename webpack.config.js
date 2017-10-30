@@ -81,6 +81,7 @@ module.exports={
        {
         test: /\.jsx$/,
         loader:'babel-loader',
+        //有了babel loader就不需要jsx-loader了，那是去年的事情了,这里原先是jsx-loader
         query: {
                presets: ['es2015']
            }
