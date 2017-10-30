@@ -73,19 +73,17 @@ module.exports={
       },
       {
         test:/\.js$/,
-        loader:'jsx-loader'
+        loader:'babel-loader',
+        query: {
+               presets: ['es2015']
+           }
       },
        {
         test: /\.jsx$/,
-
-        use: [
-        {
-          loader: ["babel-loader","jsx-loader"],
-          options: {
-             presets: ['es2017','react'],
-             exclude: /node_modules/
-          }
-        }]
+        loader:'babel-loader',
+        query: {
+               presets: ['es2015']
+           }
       }
 
     ]
