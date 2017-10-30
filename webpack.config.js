@@ -3,6 +3,7 @@
 // babel学习文档：http://www.ruanyifeng.com/blog/2016/01/babel.html
 // react学习文档：https://doc.react-china.org/
 // webpack调试文档：待添加
+// webpack官方文档：https://webpack.js.org/concepts/loaders/#example
 
 var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
