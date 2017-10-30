@@ -1,3 +1,9 @@
+// webpack学习文档：http://zhaoda.net/webpack-handbook/loader.html
+//webpack学习文档(易懂)：http://www.runoob.com/w3cnote/webpack-tutorial.html
+// babel学习文档：http://www.ruanyifeng.com/blog/2016/01/babel.html
+// react学习文档：https://doc.react-china.org/
+// webpack调试文档：待添加
+
 var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
 var extractTextPlugin=require('extract-text-webpack-plugin');//用来单独加载css，不需要依赖js，bundle
@@ -90,3 +96,4 @@ module.exports={
     ]
   }
 }
+
