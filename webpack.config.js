@@ -48,36 +48,34 @@ module.exports={
        extensions:['.js','.json','.jsx']//配置，require自动补全后缀的文件。
    },
    externals: {
-       "jquery": "jQuery"/*
-       'react-dom': 'react-dom',
-       'react':'react',*/
-       //问：为什么放在这就不行。js里面引入失败？。
+       "jquery": "window.jQuery"
+       //这里用来解释部分require('xxx');,应为他们不是模块化，所以得有个全局对象映射。
    },
 
   module:{
     loaders:[
-//      {
-//        test:/\.css$/,
-//        loader:'style-loader!css-loader'
-//      },
       {
         test:/\.css$/,
-        loader:extractTextPlugin.extract({
-          fallback:'style-loader',
-          use:'css-loader'
-        })
+        loader:'style-loader!css-loader'
       },
-//      {
-//        test:/\.scss$/,
-//        loader:'style-loader!css-loader!sass-loader'
-//      },
+      // {
+      //   test:/\.css$/,
+      //   loader:extractTextPlugin.extract({
+      //     fallback:'style-loader',
+      //     use:'css-loader'
+      //   })
+      // },
       {
         test:/\.scss$/,
-        loader:extractTextPlugin.extract({
-          fallback:'style-loader',
-          use:'css-loader!sass-loader'
-        })
+        loader:'style-loader!css-loader!sass-loader'
       },
+      // {
+      //   test:/\.scss$/,
+      //   loader:extractTextPlugin.extract({
+      //     fallback:'style-loader',
+      //     use:'css-loader!sass-loader'
+      //   })
+      // },
       {
         test:/\.js$/,
         loader:'babel-loader',

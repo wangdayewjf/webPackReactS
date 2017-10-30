@@ -2,11 +2,14 @@ document.write( require("./js/runoob1.js"));
 
 //es6语法
 import App  from './components/component1';
+import greenCss from '../css/green.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import greenO from './jQplugins/jqGreen';
 const element=<App/>;
 ReactDOM.render(element, document.getElementById('root'));
-
+$('#green').green();
+//
 
 //es5语法
 // var React = require("react");
