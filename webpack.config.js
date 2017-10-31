@@ -4,6 +4,8 @@
 // react学习文档：https://doc.react-china.org/
 // webpack调试文档：待添加
 // webpack官方文档：https://webpack.js.org/concepts/loaders/#example
+// webpack添加jq插件： https://segmentfault.com/a/1190000007249293#
+// sass 入门教程：http://www.ruanyifeng.com/blog/2012/06/sass.html
 
 var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
@@ -29,13 +31,16 @@ module.exports={
   plugins:[
     new htmlWebpackPlugin({
       template:'./src/index.html',
-      filename:'index.html'
-    }),
+      filename:'index.html',
+      title:'生成文件',
+      chunks: ['app']
+    }),//如果不用这个插件，不自动打包html文件，
+    //chunks属性，可以选择引入那些js文件,好像默认是entry全部引入的。
     new extractTextPlugin({
       filename:'app.css',
       allChunks:true
-    }),
-    new webpack.optimize.UglifyJsPlugin({
+    }),//如果不用这个插件，不会自动打包生成合并的css
+    new webpack.optimize.UglifyJsPlugin({//压缩代码插件。
       compress:{
         warnings:false
       },
@@ -43,6 +48,7 @@ module.exports={
         comments:false
       }
     })
+    //问:这里是使用插件，问：为什么有的插件再style处？
   ],
    resolve:{
        extensions:['.js','.json','.jsx']//配置，require自动补全后缀的文件。
@@ -54,28 +60,29 @@ module.exports={
 
   module:{
     loaders:[
-      {
+      /*{
         test:/\.css$/,
         loader:'style-loader!css-loader'
-      },
-      // {
-      //   test:/\.css$/,
-      //   loader:extractTextPlugin.extract({
-      //     fallback:'style-loader',
-      //     use:'css-loader'
-      //   })
-      // },
+      },*/
       {
+        test:/\.css$/,
+        loader:extractTextPlugin.extract({//问：这里有点像扩展类属性，上面是用扩展的类生成对象。
+          fallback:'style-loader',
+          use:'css-loader'
+        })
+      },//这种方式，1,有上面那种功能，2，提取到出到本地css文件
+      
+     /* {
         test:/\.scss$/,
         loader:'style-loader!css-loader!sass-loader'
-      },
-      // {
-      //   test:/\.scss$/,
-      //   loader:extractTextPlugin.extract({
-      //     fallback:'style-loader',
-      //     use:'css-loader!sass-loader'
-      //   })
-      // },
+      },*/
+      {
+        test:/\.scss$/,
+        loader:extractTextPlugin.extract({
+          fallback:'style-loader',
+          use:'css-loader!sass-loader'
+        })
+      },//这种方式，1,有上面那种功能，2，提取到出到本地css文件
       {
         test:/\.js$/,
         loader:'babel-loader',

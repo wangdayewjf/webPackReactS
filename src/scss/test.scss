@@ -1,0 +1,87 @@
+//使用变量
+/* $var: 10px;
+body {
+    margin: (14px/2);
+    top: 50px + 100px;
+    right: $var * 10%;
+} */
+
+//嵌套 不需要 div h1 这周写法，更直观点
+div {
+    h1 {
+        color: red;
+    }
+}
+
+a {
+    &:hover {
+        color: #ffb3ff;
+    }
+}
+
+//继承
+.class1 {
+    border: 1px solid #ddd;
+}
+
+.class2 {
+    @extend .class1;
+    font-size: 120%;
+}
+
+//定义重用代码块
+@mixin left {
+    float: left;
+    margin-left: 10px;
+}
+
+.classExcode {
+    @include left;
+}
+
+@mixin left2($value: 10px) {
+    float: left;
+    margin-right: $value;
+}
+
+.classExcode2 {
+    @include left2(20px);
+}
+
+//引入文件语法
+@import "test1.scss";
+
+
+//判断语句
+p {
+    @if 1+1==2 {
+        border: 1px solid;
+    }
+    @if 5 < 3 {
+        border: 2px dotted;
+    }
+}
+
+@for $i from 1 to 10 {
+    .border-#{$i} {
+        border: #{$i}px solid blue;
+    }
+}
+
+
+$i: 6;
+@while $i>0 {
+    .item-#{$i} {
+        width: 2em * $i;
+    }
+    $i: $i - 2;
+}
+
+//自定义函数
+@function double($n) {
+    @return $n * 2;
+}
+
+#sidebar {
+    width: double(5px);
+}
