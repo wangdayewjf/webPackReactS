@@ -7,11 +7,23 @@ import testScss from '../scss/test.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import greenO from './jQplugins/jqGreen';
+import TodoApp from './components/component2';
 const element=<App/>;
-ReactDOM.render(element, document.getElementById('root'));
 $('#green').green();
-console.log(testScss);
-//
+
+class MyFirstCompont extends React.Component{
+    render(){
+        return(
+        	<div>
+	        	<img src={require('../img/testImage.jpg')}/>
+	        	<TodoApp/>
+	        </div>
+        	)
+    }
+}
+
+ReactDOM.render(<MyFirstCompont />, document.getElementById('root'));
+
 
 //es5语法
 // var React = require("react");
