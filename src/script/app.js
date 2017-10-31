@@ -10,7 +10,7 @@ import greenO from './jQplugins/jqGreen';
 const element=<App/>;
 ReactDOM.render(element, document.getElementById('root'));
 $('#green').green();
-console.log(testSess);
+console.log(testScss);
 //
 
 //es5语法
