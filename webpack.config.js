@@ -78,17 +78,19 @@ module.exports={
       {
         test:/\.js$/,
         loader:'babel-loader',
-        query: {
-               presets: ['es2015']
-           }
+        /*query: {
+               //presets: ['es2015']
+               presets:['es2015','stage-0','react']
+           }*/
       },
        {
         test: /\.jsx$/,
         loader:'babel-loader',
         //有了babel loader就不需要jsx-loader了，那是去年的事情了,这里原先是jsx-loader
-        query: {
-               presets: ['es2015']
-           }
+       /* query: { //这里如果不写就默认用.babelrc文件里的值作为参数
+              // presets: ['es2015']
+              presets:['es2015','stage-0','react']
+           }*/
       },
       {
 　　　　　　test: /\.(png|jpg)$/,

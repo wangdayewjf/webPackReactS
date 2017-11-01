@@ -39,7 +39,8 @@ class Dianzan extends React.Component{
 			status:!this.state.status
 		});
 		if(this.props.onClick){
-			this.prop.onClick();
+			this.props.onClick();
+			//111
 		}
 	}
 	render(){
@@ -54,8 +55,33 @@ class Dianzan extends React.Component{
 			)
 				}
 }
-ReactDOM.render(<Dianzan likedText={'好的'} unlikedText={'滚'}  onClick={()=>{
-	console.log('传入方法调用');
-}}/>, document.getElementById('root'));
+
+class Index extends React.Component{
+	constructor () {
+		super();
+		this.state={
+			likedText: '取消FromIndex',
+	    	unlikedText: '点赞FromIndex'
+		}
+		this.changeStateToSetDianzan = this.changeStateToSetDianzan.bind(this);
+	}
+	changeStateToSetDianzan(){
+		this.setState({
+			likedText: '取消Update',
+	    	unlikedText: '点赞Update'
+		});
+		console.log('this',this);
+	}
+	render(){
+		return (
+			<div>
+				
+				<Dianzan likedText={this.state.likedText} unlikedText={this.state.unlikedText}/>
+				<button onClick={this.changeStateToSetDianzan}>调试</button>
+			</div>
+		)
+	}
+}
+ReactDOM.render(<Index/>, document.getElementById('root'));
 
 
