@@ -22,39 +22,40 @@ class MyFirstCompont extends React.Component{
     }
 }
 
-ReactDOM.render(<MyFirstCompont />, document.getElementById('root'));
+class Dianzan extends React.Component{
+	 static defaultProps = {
+	    likedText: '取消',
+	    unlikedText: '点赞'
+	 }
+	 constructor () {
+	    super();
+	    this.state={status:false};
+	    this.changStatus = this.changStatus.bind(this);
+	}
+
+	changStatus(e){
+
+		this.setState({
+			status:!this.state.status
+		});
+		if(this.props.onClick){
+			this.prop.onClick();
+		}
+	}
+	render(){
+
+		return (
+			<button onClick={this.changStatus}>
+
+				{this.state.status==true?this.props.likedText:this.props.unlikedText}👍
+				
+
+			</button>
+			)
+				}
+}
+ReactDOM.render(<Dianzan likedText={'好的'} unlikedText={'滚'}  onClick={()=>{
+	console.log('传入方法调用');
+}}/>, document.getElementById('root'));
 
 
-//es5语法
-// var React = require("react");
-// var ReactDOM = require('react-dom');
-// var App = require('./components/component1');
-// var Welcome = React.createClass({
-//     propTypes: {//定义传入props中的属性各种类型
-//         initialValue: React.PropTypes.string
-//     },
-//     defaultProps: { //组件默认的props对象
-//         initialValue: ''
-//     },
-//     // 设置 initial state
-//     getInitialState: function() {//组件相关的状态对象
-//         return {
-//             text: this.props.initialValue || 'placeholder'
-//         };
-//     },
-//     handleChange: function(event) {
-//         this.setState({ //this represents react component instance
-//             text: event.target.value
-//         });
-//     },
-//     render: function() {
-//         return (
-//             <div>
-//                 Type something:
-//                 <input onChange={this.handleChange} value={this.state.text} />
-//             </div>
-//         );
-//     }
-// });
-
-//ReactDOM.render(<Welcome name="Sara"/>, document.getElementById('root'));

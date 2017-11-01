@@ -1,20 +1,9 @@
-// webpack学习文档：http://zhaoda.net/webpack-handbook/loader.html
-//webpack学习文档(易懂)：http://www.runoob.com/w3cnote/webpack-tutorial.html
-// babel学习文档：http://www.ruanyifeng.com/blog/2016/01/babel.html
-// react学习文档：https://doc.react-china.org/
-// react demo练习文档（易懂）：http://huziketang.com/books/react/lesson9
-// webpack官方文档：https://webpack.js.org/concepts/loaders/#example
-// webpack添加jq插件： https://segmentfault.com/a/1190000007249293#
-// sass 入门教程：http://www.ruanyifeng.com/blog/2012/06/sass.html
-//chrome sourceMap调试 教程：https://segmentfault.com/a/1190000005720314
-// webpack调试教程：首先需要chrome修改调试模式,https://segmentfault.com/a/1190000004280859
-// Source Map教程:,http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html
+
 var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
-var extractTextPlugin=require('extract-text-webpack-plugin');//用来单独加载css，不需要依赖js，bundle
+var extractTextPlugin=require('extract-text-webpack-plugin');
 module.exports={
-  devtool: 'cheap-module-eval-source-map',//Source Map 线上调试 功能
-  //entry:'./src/script/app.js', 打包成单文件
+  devtool: 'cheap-module-eval-source-map',
   entry:{
     app:'./src/script/app.js',
     runoob1:'./src/script/js/runoob1.js',
@@ -27,7 +16,7 @@ module.exports={
     filename:'[name].js'
   },
   devServer:{
-    contentBase:'./build',//本地服务器所加载页面所在的目录
+    contentBase:'./build',
     port:9000,
     host:'localhost',
     historyApiFallback:true
