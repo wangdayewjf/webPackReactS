@@ -17,8 +17,11 @@ module.exports={
   //entry:'./src/script/app.js', 打包成单文件
   entry:{
     app:'./src/script/app.js',
-    runoob1:'./src/script/js/runoob1.js',
-    runoob2:'./src/script/js/runoob2.js'
+    /*runoob1:'./src/script/js/runoob1.js',
+    runoob2:'./src/script/js/runoob2.js'*/
+    //这里打包成多个文件
+    //runoob1:'./src/script/js/runoob1.js',//这里会执行require('runoob1.js'),不管入口js(app.js)是否require了这个文件
+    //runoob2:'./src/script/js/runoob2.js'//这里最后会执行require('runoob2.js'),,不管入口js(app.js)是否require了这个文件
     //这里打包成多个文件
   },
   output:{
