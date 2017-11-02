@@ -1,6 +1,6 @@
 
 
-//es6语法
+//es6语法,乱测demo。
 /*
 
 document.write( require("./js/runoob1.js"));
@@ -130,3 +130,5 @@ ReactDOM.render(
   <CommentApp />,
   document.getElementById('root')
 );
+
+
