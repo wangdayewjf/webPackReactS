@@ -18,6 +18,7 @@ class CommentApp extends Component {
       this.setState({
         comments:comments
       });
+      console.log('componentDidMount');
     }
   _getComments(){
     let comments = [];
@@ -32,6 +33,7 @@ class CommentApp extends Component {
       comments:comments
     });
     this._setComments();
+    console.log('_deleteComment');
   }
   _setComments(){
     localStorage.setItem('comments', JSON.stringify(this.state.comments));
