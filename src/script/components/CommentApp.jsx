@@ -9,7 +9,33 @@ class CommentApp extends Component {
       comments: []
     }
   }
-
+  componentDidMount () {
+      let comments = [];
+      if(this._getComments()!=null){
+        comments = this._getComments();
+        console.log('this._getComments',this._getComments());
+      }
+      this.setState({
+        comments:comments
+      });
+    }
+  _getComments(){
+    let comments = [];
+    let commentStr = localStorage.getItem('comments',this.state.comments);
+    comments = JSON.parse(commentStr);//json字符串，转json对象。
+    return comments;
+  }
+  _deleteComment(index){
+    const comments = this.state.comments
+    comments.splice(index, 1)
+    this.setState({
+      comments:comments
+    });
+    this._setComments();
+  }
+  _setComments(){
+    localStorage.setItem('comments', JSON.stringify(this.state.comments));
+  }
   handleSubmitComment (comment) {
     if (!comment) return
     if (!comment.username) return alert('请输入用户名')
@@ -17,14 +43,17 @@ class CommentApp extends Component {
     this.state.comments.push(comment)
     this.setState({
       comments: this.state.comments
-    })
+    });
+    this._setComments();
   }
 
   render() {
     return (
       <div className='wrapper'>
         <CommentInput onSubmit={this.handleSubmitComment.bind(this)} />
-        <CommentList comments={this.state.comments}/>
+        <CommentList comments={this.state.comments}
+          deleteComment={this._deleteComment.bind(this)}
+        />
       </div>
     )
   }

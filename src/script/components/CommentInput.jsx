@@ -7,14 +7,27 @@ class CommentInput extends Component {
       username: '',
       content: ''
     }
-  }
 
+  }
+  componentDidMount () {
+    let localUserName = this._getUsername();
+    this.setState({
+      username:localUserName
+    });
+  }
   handleUsernameChange (event) {
     this.setState({
       username: event.target.value
-    })
+    });
+    this._saveUsername(event.target.value);
   }
-
+  _saveUsername (username) {
+    localStorage.setItem('username', username)
+  }
+  _getUsername(){
+    let userName = localStorage.getItem('username');
+    return userName;
+  }
   handleContentChange (event) {
     this.setState({
       content: event.target.value
@@ -26,6 +39,7 @@ class CommentInput extends Component {
       this.props.onSubmit({
         username: this.state.username,
         content: this.state.content,
+        createTime:+Date.now()
       })
     }
     this.setState({ content: '' })
