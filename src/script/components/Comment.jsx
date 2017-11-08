@@ -37,12 +37,14 @@ class Comment extends Component {
       <div className='comment'>
         <div className='comment-user'>
           <span>{this.state.username} </span>：
+          <span>{this.state.content}</span>
         </div>
-        <p>{this.state.content}</p>
         <p>
           <span>{this.state.timeStr}</span>
         </p>
-        <input type='button' onClick={this._deleteComment.bind(this)} value='删除'/>
+        <a href="javascript:void(0);" onClick={this._deleteComment.bind(this)}>
+            删除
+        </a>
       </div>
     )
   }
