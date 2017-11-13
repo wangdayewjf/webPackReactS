@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class Comment extends Component {
   constructor () {
@@ -49,5 +50,22 @@ class Comment extends Component {
     )
   }
 }
+
+//从store中取的state
+const CommentsStateFromStateStoreToProps = (state) => {
+  return {
+    commentState: state.commentState
+  }
+}
+
+//修改store中state的接口
+const CommentChangeStateToProps = (dispatch) => {
+  return {
+    onChangeStoreState: (commentState) => {
+      dispatch({ type: 'COMMENT_STATE', commentState: commentState })
+    }
+  }
+}
+Comment = connect(CommentsStateFromStateStoreToProps,CommentChangeStateToProps)(Comment);
 
 export default Comment

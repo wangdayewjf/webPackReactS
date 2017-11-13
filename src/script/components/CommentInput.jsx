@@ -75,4 +75,22 @@ class CommentInput extends Component {
   }
 }
 
-export default CommentInput
+
+//从store中取的state
+const CommentsInputFromStateStoreToProps = (state) => {
+  return {
+    commentInputState: state.commentInputState
+  }
+}
+
+//修改store中state的接口
+const CommentInputChangeStateToProps = (dispatch) => {
+  return {
+    onChangeStoreState: (commentInputState) => {
+      dispatch({ type: 'COMMENT_INPUT_STATE', commentInputState: commentInputState })
+    }
+  }
+}
+CommentInput = connect(CommentInputChangeStateToProps,CommentsInputFromStateStoreToProps)(CommentInput);
+
+export default CommentInput;

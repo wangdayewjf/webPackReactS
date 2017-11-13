@@ -121,14 +121,17 @@ ReactDOM.render(<Index/>, document.getElementById('root'));
 */
 
 //评论demo
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import CommentApp from './components/CommentApp'
 import '../css/index.css';
 
-ReactDOM.render(
-  <CommentApp />,
-  document.getElementById('root')
-);
+class App extends Component {
+	render(){
+		<CommentApp />
+	}
+}
+
+export default App;
 
 

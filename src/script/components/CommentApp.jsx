@@ -61,4 +61,22 @@ class CommentApp extends Component {
   }
 }
 
-export default CommentApp
+
+//从store中取的state
+const CommentAppsStateFromStateStoreToProps = (state) => {
+  return {
+    commentAppState: state.commentAppState
+  }
+}
+
+//修改store中state的接口
+const CommentAppChangeStateToProps = (dispatch) => {
+  return {
+    onChangeStoreState: (commentAppState) => {
+      dispatch({ type: 'COMMENTAPP_STATE', commentAppState: commentAppState })
+    }
+  }
+}
+CommentApp = connect(CommentAppsStateFromStateStoreToProps,CommentAppChangeStateToProps)(CommentApp);
+
+export default CommentApp;
