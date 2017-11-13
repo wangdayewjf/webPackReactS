@@ -5,7 +5,7 @@ var extractTextPlugin=require('extract-text-webpack-plugin');
 module.exports={
   devtool: 'cheap-module-eval-source-map',
   entry:{
-    app:'./src/script/app.js',
+    app:'./src/script/index.js',
     //runoob1:'./src/script/js/runoob1.js',//这里会执行require('runoob1.js')
     //runoob2:'./src/script/js/runoob2.js'//这里最后会执行require('runoob2.js')
     //这里打包成多个文件

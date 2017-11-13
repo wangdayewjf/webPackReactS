@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Comment from './Comment'
+import { connect } from 'react-redux'
 
 class CommentList extends Component {
   static defaultProps = {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CommentInput from './CommentInput'
 import CommentList from './CommentList'
+import { connect } from 'react-redux'
 
 class CommentApp extends Component {
   constructor () {
