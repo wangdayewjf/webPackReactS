@@ -14,6 +14,11 @@ class CommentInput extends Component {
     }
 
   }
+  componentWillMount () {
+    this.setState({
+      username:this.props.username
+    });
+  }
   componentDidMount () {
     
     /*this.setState({

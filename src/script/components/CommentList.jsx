@@ -5,8 +5,11 @@ class CommentList extends Component {
     comments: []
   }
   _deleteComment(index){
+    console.log(index);
     if(this.props.deleteComment){
+      console.log('deleteComment');
       this.props.deleteComment(index);
+
     }
   }
   render() {

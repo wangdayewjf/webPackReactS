@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 class Comment extends Component {
+  static propTypes = {
+    comment: PropTypes.any,
+    deleteComment: PropTypes.func
+  }//要求prop参数类型。
   constructor () {
     super()
     this.state = {
@@ -29,7 +34,12 @@ class Comment extends Component {
   }
   _deleteComment(){
     //clearInterval(this._timer);
-    this.props.deleteComment(this.props.index);
+    if(this.props.deleteComment){
+      this.props.deleteComment(this.props.index);
+    }else{
+      console.log("请传入deleteComment参数");
+    }
+    
   }
   render () {
     return (

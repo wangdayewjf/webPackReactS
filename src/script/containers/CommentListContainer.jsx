@@ -8,8 +8,7 @@ import {initComments,addComment,deleteComment} from '../reducers/comments'
 class CommentListContainer extends Component {
   static defaultProps = {
       comments: PropTypes.array,
-      initComments: PropTypes.func,
-      onDeleteComment: PropTypes.func
+      initComments: PropTypes.func
     }
   componentWillMount () {
     // componentWillMount 生命周期中初始化评论
@@ -36,14 +35,15 @@ class CommentListContainer extends Component {
     if (this.props.onDeleteComment) {
       // this.props.onDeleteComment 是 connect 传进来的
       // 会 dispatch 一个 action 去删除评论
-      this.props.onDeleteComment(index)
+     // this.props.onDeleteComment(index)
+      deleteComment(index)
     }
   }
   render() {
     return (
       <CommentList
         comments={this.props.comments}
-        onDeleteComment={this.handleDeleteComment.bind(this)} 
+        deleteComment={this.handleDeleteComment.bind(this)} 
       />
     )
   }

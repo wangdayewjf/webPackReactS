@@ -34,18 +34,22 @@ class CommentInput extends Component {
   _handleSubmit(subObj){
     //更新store中的comments
     //TO DO
-    
-    this.props.addComment(subObj);
+    this.props.addComment(subObj);//这个this.props.addComment是在包装者中
+    console.log(this.props.comments);
+    localStorage.setItem('comments',JSON.stringify(this.props.comments));
   }
   render () {
     return (
-      <InputDubmp username={this.state.username}
+      <InputDubmp userName={this.state.username}
                   saveUsername={this._saveUsername.bind(this)}
                   onSubmit={this._handleSubmit.bind(this)}
+                  getUserName = {this._getUsername.bind(this)}
       />
     )
   }
 }
+
+
 
 
 //从store中取的state
@@ -54,6 +58,8 @@ const CommentsInputFromStateStoreToProps = (state) => {
     comments: state.comments
   }
 }
+
+
 
 //修改store中state的接口
 const CommentInputChangeStateToProps = (dispatch) => {
@@ -69,6 +75,6 @@ const CommentInputChangeStateToProps = (dispatch) => {
     }
   }
 }
-CommentInput = connect(CommentInputChangeStateToProps,CommentsInputFromStateStoreToProps)(CommentInput);
+CommentInput = connect(CommentsInputFromStateStoreToProps,CommentInputChangeStateToProps)(CommentInput);
 
 export default CommentInput;

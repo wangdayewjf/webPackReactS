@@ -36,7 +36,7 @@ export const initComments = (comments) => {
 }
 
 export const addComment = (comment) => {
-  return { type: ADD_COMMENT, comment }
+  return { type: ADD_COMMENT, comment:comment }
 }
 
 export const deleteComment = (commentIndex) => {
