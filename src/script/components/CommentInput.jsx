@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
+import PropTypes from 'prop-types'
 class CommentInput extends Component {
+   static propTypes = {
+    username: PropTypes.any,
+    onSubmit: PropTypes.func,
+    saveUsername: PropTypes.func
+  }//要求prop参数类型。
   constructor () {
     super()
     this.state = {
@@ -11,24 +15,27 @@ class CommentInput extends Component {
 
   }
   componentDidMount () {
-    let localUserName = this._getUsername();
-    this.setState({
+    
+    /*this.setState({
       username:localUserName
-    });
+    });*/
   }
   handleUsernameChange (event) {
     this.setState({
       username: event.target.value
     });
-    this._saveUsername(event.target.value);
+    if(this.props.saveUsername){
+      this.props.saveUsername(event.target.value);
+    }
+    
   }
-  _saveUsername (username) {
+  /*_saveUsername (username) {
     localStorage.setItem('username', username)
-  }
-  _getUsername(){
+  }*/
+  /*_getUsername(){
     let userName = localStorage.getItem('username');
     return userName;
-  }
+  }*///这应该写在smartComment里面
   handleContentChange (event) {
     this.setState({
       content: event.target.value
@@ -53,7 +60,7 @@ class CommentInput extends Component {
           <span className='comment-field-name'>用户名：</span>
           <div className='comment-field-input'>
             <input
-              value={this.state.username}
+              value={this.props.username}
               onChange={this.handleUsernameChange.bind(this)} />
           </div>
         </div>
@@ -76,22 +83,5 @@ class CommentInput extends Component {
   }
 }
 
-
-//从store中取的state
-const CommentsInputFromStateStoreToProps = (state) => {
-  return {
-    commentInputState: state.commentInputState
-  }
-}
-
-//修改store中state的接口
-const CommentInputChangeStateToProps = (dispatch) => {
-  return {
-    onChangeStoreState: (commentInputState) => {
-      dispatch({ type: 'COMMENT_INPUT_STATE', commentInputState: commentInputState })
-    }
-  }
-}
-CommentInput = connect(CommentInputChangeStateToProps,CommentsInputFromStateStoreToProps)(CommentInput);
 
 export default CommentInput;

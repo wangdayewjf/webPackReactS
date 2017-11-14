@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import Comment from './Comment'
-import { connect } from 'react-redux'
-
 class CommentList extends Component {
   static defaultProps = {
     comments: []
@@ -25,22 +23,5 @@ class CommentList extends Component {
   }
 }
 
-
-//从store中取的state
-const CommentsListFromStateStoreToProps = (state) => {
-  return {
-    commentListState: state.commentListState
-  }
-}
-
-//修改store中state的接口
-const CommentListChangeStateToProps = (dispatch) => {
-  return {
-    onChangeStoreState: (commentState) => {
-      dispatch({ type: 'COMMENT_LIST_STATE', commentListState: commentListState })
-    }
-  }
-}
-CommentList = connect(CommentsListFromStateStoreToProps,CommentListChangeStateToProps)(CommentList);
 
 export default CommentList;

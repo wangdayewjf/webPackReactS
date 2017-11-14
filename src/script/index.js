@@ -3,39 +3,17 @@ import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import '../css/index.css'
-import App from './app'
+import CommentApp from './containers/CommentApp'
+import reducer from './reducers/comments'
 
-const themeReducer = (state, action) => {
-  if (!state) return {
-    themeColor: 'red',
-    commentState:'commentTestState',
-    commentAppState:'commentAppTestState',
-    commentInputState:'commentInputTestState',
-    appState:'appTestState'
-  }
-  switch (action.type) {
-    case 'CHANGE_COLOR':
-      return { ...state, themeColor: action.themeColor }
-    case 'COMMENT_STATE':
-      return {...state,commentState:action.commentState}
-    case 'COMMENTAPP_STATE':
-      return {...state,commentAppState:action.commentAppState}
-    case 'COMMENT_INPUT_STATE':
-      return {...state,commentInputState:action.commentInputState}
-    case 'APP_STATE':
-      return {...state,appState:action.appState}
-    default:
-      return state
-  }
-}
 
-const store = createStore(themeReducer)
+const store = createStore(reducer)//初始化store
 
 class Index extends Component {
   render () {
     return (
       <div>
-        <App />
+        <CommentApp />
       </div>
     )
   }
