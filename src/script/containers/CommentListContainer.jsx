@@ -13,14 +13,18 @@ class CommentListContainer extends Component {
   componentWillMount () {
     // componentWillMount 生命周期中初始化评论
     this._loadComments()
+
+    console.log('CommentListContainer',this.props.comments);
   }
    _loadComments () {
-      // 从 LocalStorage 中加载评论
-      let comments = localStorage.getItem('comments')
-      comments = comments ? JSON.parse(comments) : []
-      // this.props.initComments 是 connect 传进来的
-      // 可以帮我们把数据初始化到 state 里面去
-      this.props.initComments(comments)
+          // 从 LocalStorage 中加载评论
+          let comments = localStorage.getItem('comments')
+          comments = comments ? JSON.parse(comments) : []
+          // this.props.initComments 是 connect 传进来的
+          // 可以帮我们把数据初始化到 state 里面去
+          this.props.initComments(comments)
+
+      
   }
 
   handleDeleteComment (index) {
@@ -32,14 +36,16 @@ class CommentListContainer extends Component {
     ]
     // 保存最新的评论列表到 LocalStorage
     localStorage.setItem('comments', JSON.stringify(newComments))
-    if (this.props.onDeleteComment) {
+    if (this.props.deleteComment) {
       // this.props.onDeleteComment 是 connect 传进来的
       // 会 dispatch 一个 action 去删除评论
      // this.props.onDeleteComment(index)
-      deleteComment(index)
+      this.props.deleteComment(index)
     }
+    console.log('CommentListContainer_Delete',index);
   }
   render() {
+    console.log('CommentListRender',this.props.comments);
     return (
       <CommentList
         comments={this.props.comments}

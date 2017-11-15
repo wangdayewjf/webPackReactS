@@ -19,11 +19,12 @@ export default function (state, action) {
       }
     case DELETE_COMMENT:
       // 删除评论
-      return {
-        comments: [
+       let newComments = [
           ...state.comments.slice(0, action.commentIndex),
           ...state.comments.slice(action.commentIndex + 1)
-        ]
+        ];
+      return {
+        comments: newComments
       }
     default:
       return state

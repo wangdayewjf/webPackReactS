@@ -15,6 +15,7 @@ class Comment extends Component {
 
   }
   componentWillMount () {
+
     this._updateTimeStr();
     this._timer = setInterval(
       this._updateTimeStr.bind(this),
@@ -33,8 +34,9 @@ class Comment extends Component {
      });
   }
   _deleteComment(){
-    //clearInterval(this._timer);
+    clearInterval(this._timer);
     if(this.props.deleteComment){
+
       this.props.deleteComment(this.props.index);
     }else{
       console.log("请传入deleteComment参数");
@@ -42,6 +44,7 @@ class Comment extends Component {
     
   }
   render () {
+    console.log('commentRender');
     return (
       <div className='comment'>
         <div className='comment-user'>
