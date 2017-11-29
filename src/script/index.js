@@ -6,7 +6,8 @@ import '../css/index.css'
 import CommentApp from './containers/CommentApp'
 import reducer from './reducers/comments';
 import BasicRouter from './routerDemos/basicRouter';
-
+import PramaterAndLinkRouter from './routerDemos/pramaterAndLinkRouter'
+import WithRouterRdux from './routerDemos/withRouterRdux' //redux，和withRouter结合
 import {
   BrowserRouter as Router,
   Route,
@@ -33,7 +34,10 @@ class Index extends Component {
 
 ReactDOM.render(
   <Provider store={store}>
-    <BasicRouter />
+    <Router>
+      
+      <WithRouterRdux />
+    </Router>
   </Provider>,
   document.getElementById('root')
 )

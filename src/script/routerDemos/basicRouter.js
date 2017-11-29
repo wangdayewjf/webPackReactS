@@ -8,7 +8,6 @@ import {
 
 
 const Index = ()=>(
-    <Router>
       <div>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -22,7 +21,6 @@ const Index = ()=>(
         <Route path="/about" component={About}/>
         <Route path="/topics" component={Topics}/>
       </div>
-    </Router>
   );
 
 

@@ -3,10 +3,15 @@ const INIT_COMMENTS = 'INIT_COMMENTS'
 const ADD_COMMENT = 'ADD_COMMENT'
 const DELETE_COMMENT = 'DELETE_COMMENT'
 
+//router和redux结合测试
+const EDIT_REDUXSTATE = 'EDIT_REDUXSTATE'
 // reducer
 export default function (state, action) {
   if (!state) {
-    state = { comments: [] }
+    state = { 
+      comments: [],
+      withRouterReduxState:'withRouterReduxState'
+    }
   }
   switch (action.type) {
     case INIT_COMMENTS:
@@ -26,6 +31,10 @@ export default function (state, action) {
       return {
         comments: newComments
       }
+    case EDIT_REDUXSTATE:
+      return {
+        withRouterReduxState:action.withRouterReduxState
+      }
     default:
       return state
   }
@@ -42,4 +51,10 @@ export const addComment = (comment) => {
 
 export const deleteComment = (commentIndex) => {
   return { type: DELETE_COMMENT, commentIndex }
+}
+
+//router和redux结合测试
+//
+export const editRouterReduxComment = (withRouterReduxState) => {
+  return { type: EDIT_REDUXSTATE, withRouterReduxState }
 }
