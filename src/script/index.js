@@ -8,6 +8,7 @@ import reducer from './reducers/comments';
 import BasicRouter from './routerDemos/basicRouter';
 import PramaterAndLinkRouter from './routerDemos/pramaterAndLinkRouter'
 import WithRouterRdux from './routerDemos/withRouterRdux' //redux，和withRouter结合
+import ChoseShowAndRedirect from './routerDemos/choseShowAndRedirect';
 import {
   BrowserRouter as Router,
   Route,
@@ -36,7 +37,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       
-      <WithRouterRdux />
+      <ChoseShowAndRedirect />
     </Router>
   </Provider>,
   document.getElementById('root')
