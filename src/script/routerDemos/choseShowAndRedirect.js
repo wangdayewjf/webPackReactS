@@ -17,8 +17,8 @@ const AutExample = ()=>{
 					<li><Link to="/protect">protected page</Link></li>
 				</ul>
 				<Route path="/public"  component={Public}/>
-				<Route path="/protect" component={Protected}/>
-				<PrivateRoute component={LogIn}/>
+				 <Route path="/login" component={Login}/>
+				<PrivateRoute path="/protect" component={Protected}/>
 			</div>
 
 
@@ -50,15 +50,14 @@ const PrivateRoute = ({component:Component,...res})=>(
 				<Redirect to={{
 					pathname:'/login',
 					state:{from:props.location}
-				}}
-
-			/>)
+				}}/>
+			)
 
 		)}/>
 		
 	);
 //问题：什么情况下回刷新页面，刷新那些部分？因为我看没有相对于prop,以及state的内容。答：不是有么?
-class LogIn  extends React.Component {
+class Login  extends React.Component {
 	_handelLogIn(){
 		fakeAuth.logIn();
 	}
