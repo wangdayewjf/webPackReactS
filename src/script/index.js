@@ -9,6 +9,7 @@ import BasicRouter from './routerDemos/basicRouter';
 import PramaterAndLinkRouter from './routerDemos/pramaterAndLinkRouter'
 import WithRouterRdux from './routerDemos/withRouterRdux' //redux，和withRouter结合
 import ChoseShowAndRedirect from './routerDemos/choseShowAndRedirect';
+import FormValidation from './routerDemos/formValidation';
 import {
   BrowserRouter as Router,
   Route,
@@ -37,7 +38,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       
-      <ChoseShowAndRedirect />
+      <FormValidation />
     </Router>
   </Provider>,
   document.getElementById('root')
