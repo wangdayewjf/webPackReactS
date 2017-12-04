@@ -10,6 +10,7 @@ import PramaterAndLinkRouter from './routerDemos/pramaterAndLinkRouter'
 import WithRouterRdux from './routerDemos/withRouterRdux' //redux，和withRouter结合
 import ChoseShowAndRedirect from './routerDemos/choseShowAndRedirect';
 import FormValidation from './routerDemos/formValidation';
+import TwoRoutesonePage from './routerDemos/css-TwoRoutesonePage-noMatch';
 import {
   BrowserRouter as Router,
   Route,
@@ -37,8 +38,7 @@ class Index extends Component {
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      
-      <FormValidation />
+      <TwoRoutesonePage />
     </Router>
   </Provider>,
   document.getElementById('root')
