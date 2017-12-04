@@ -33,7 +33,7 @@ const switchDoms = [
 ];
 
 const SidebarExample =()=>(
-	<div style={{display:'flex'}}>
+	<div className="mainDiv">
 		<div style={{flex:1}}> 
 			<ul style={{ listStyleType: 'none', padding: 0 }}>
 	          <li><Link to="/">Home</Link></li>

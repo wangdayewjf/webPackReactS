@@ -1,3 +1,7 @@
-.testDiv{
-	
+.mainDiv{
+	display: flex;
+
+}
+.mainDiv > div:first-child{
+	background-color:  	yellow;
 }
