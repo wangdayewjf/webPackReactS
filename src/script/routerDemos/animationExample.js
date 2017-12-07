@@ -9,53 +9,11 @@ import {
   Switch
 } from 'react-router-dom'
 
-/*
-.fade-enter {
-  opacity: 0;
-  z-index: 1;
-}
+//api https://reactcommunity.org/react-transition-group/#Transition
+//易懂 https://www.cnblogs.com/qq120848369/p/6066837.html
 
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 250ms ease-in;
-}
-*/
-
-const duration = 300;
-
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0,
-}
-
-const transitionStyles = {
-  entering: { opacity: 0 },
-  entered:  { opacity: 1 },
-  EXITING:  {opacity: 0.5},
-  EXITED:   {opacity: 0 }
-};
-
-const Fade = ({ in: inProp }) => (
-  <Transition in={inProp} timeout={duration}>
-    {(state)=>(
-        <Route
-          location={location}
-          key={location.key}
-          path="/:h/:s/:l"
-          component={HSL}
-          style={{
-            ...defaultStyle,
-            ...transitionStyles[state]
-          }}
-
-        />)}
-  </Transition>
-);
-let testNum = true;
 const AnimationExample = () => (
     <Route render={({ location }) => {
-      testNum = !testNum; 
-      console.log('testNum',testNum);
       return (
               <div style={styles.fill}>
                 <ul style={styles.nav}>
@@ -66,11 +24,22 @@ const AnimationExample = () => (
 
                 <div style={styles.content}>
                   <TransitionGroup>
-                      <CSSTransition key={location.key} timeout={500} classNames="fading-animation-transition" mountOnEnter={true} unmountOnExit={true}>
+                      <CSSTransition key={location.key} style={{position:'relative'}} timeout={500} 
+                        addEndListener={(node, done) => {
+
+                           node.addEventListener('transitionend', function endTest(event) {
+                             done(event)
+                             console.log('endTest');
+                           }, false);
+                           //添加动画完成之后的回调事件、
+                           //注意这个属性跟timeout有点违背，如果timeout小于css里面动画事件，这个就不会执行？所以
+                           //一般加这个属性，就不加timeout，加timeout就不加这个属性
+                        }}
+                        classNames="fade" mountOnEnter={true} unmountOnExit={true}>
                           <Switch location={location}>
                               <Route path="/" exact component={Home} />
                               <Route path="/blog" component={Blog} />
-                              <Route path="/albumn" component={Albumn} />
+                              <Route path="/albumn" component={Albumn}/>
                           </Switch>
                       </CSSTransition>
                   </TransitionGroup>
@@ -79,26 +48,26 @@ const AnimationExample = () => (
             );
     }}/>
 )
-
+//这里的CSSTransition timeout 完全是用于控制回调的等待时间，真正的动画效果，还是写在css
 const NavLink = (props) => (
   <li style={styles.navItem}>
     <Link {...props} style={{ color: 'inherit' }}/>
   </li>
 )
 const Home = (props)=>(
-    <div>
+    <div style={{position:"absolute", width: "100%"}} >
       Home
 
     </div>
   );
 const Blog =(props)=>(
-  <div>
+  <div style={{position:"absolute", width: "100%"}}>
     Blog
   </div>
 )
 
 const Albumn = (props)=>(
-  <div>
+  <div  style={{position:"absolute", width: "100%"}}>
     Albumn
 
   </div>
