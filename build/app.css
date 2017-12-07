@@ -117,3 +117,15 @@ body {
   margin-left: 10px;
   text-decoration:none;
 }
+ .mainDiv{
+	display: flex;
+
+
+}
+.mainDiv > div:first-child{
+	background-color:  	yellow;
+}
+
+/*  
+ 默认是局部class，这种写法可以用作全局class :global(.mainDiv) 
+*/

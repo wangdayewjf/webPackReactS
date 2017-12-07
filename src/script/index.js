@@ -11,6 +11,7 @@ import WithRouterRdux from './routerDemos/withRouterRdux' //redux，和withRoute
 import ChoseShowAndRedirect from './routerDemos/choseShowAndRedirect';
 import FormValidation from './routerDemos/formValidation';
 import TwoRoutesonePage from './routerDemos/css-TwoRoutesonePage-noMatch';
+import AnimationExample from './routerDemos/animationExample';
 import {
   BrowserRouter as Router,
   Route,
@@ -38,7 +39,7 @@ class Index extends Component {
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <TwoRoutesonePage />
+      <AnimationExample />
     </Router>
   </Provider>,
   document.getElementById('root')
