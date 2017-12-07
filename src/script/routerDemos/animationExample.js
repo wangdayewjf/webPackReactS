@@ -34,6 +34,8 @@ const AnimationExample = () => (
                            //添加动画完成之后的回调事件、
                            //注意这个属性跟timeout有点违背，如果timeout小于css里面动画事件，这个就不会执行？所以
                            //一般加这个属性，就不加timeout，加timeout就不加这个属性
+                           //按那样说，应该TransitionGroup 下面有 很多CSSTransition 为什么这里只一个？而且他们不是通过key来判断
+                           //是否是哪个移出哪个移入的么？
                         }}
                         classNames="fade" mountOnEnter={true} unmountOnExit={true}>
                           <Switch location={location}>
