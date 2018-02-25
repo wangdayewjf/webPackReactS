@@ -11,6 +11,7 @@
 // Source Map教程:,http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html
 // react-router(4.0)教程：https://reacttraining.com/react-router/web/example/basic
 // react-router-redux教程：https://github.com/reacttraining/react-router/tree/master/packages/react-router-redux
+// mocha测试框架学习（易懂）:http://www.ruanyifeng.com/blog/2015/12/a-mocha-tutorial-of-examples.html
 var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
 var extractTextPlugin=require('extract-text-webpack-plugin');//用来单独加载css，不需要依赖js，bundle
